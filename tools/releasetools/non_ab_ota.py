@@ -221,6 +221,16 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Target: {}".format(target_info.fingerprint))
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
+
+  is_plus = target_info.GetBuildProp("org.heavensexperience.version")
+  android_version = target_info.GetBuildProp("ro.build.version.release")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("org.heavensexperience.build_date")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("org.heavensexperience.device")
+  script.PrintHeavensExperienceBanner(is_plus, android_version, build_id, build_date,
+                                  security_patch, device)
+
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)

@@ -153,12 +153,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^aosp_") ; then
-        CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^aosp_//g')
+    if (echo -n $1 | grep -q -e "^heavens_") ; then
+        HEAVENS_BUILD=$(echo -n $1 | sed -e 's/^heavens_//g')
     else
-        CUSTOM_BUILD=
+        HEAVENS_BUILD=
     fi
-    export CUSTOM_BUILD
+    export HEAVENS_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
